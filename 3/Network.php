@@ -2,16 +2,22 @@
 
 class Network{
     private $b = array();//重み
-    private $W = array();
+    private $W1 = array();
+    private $W2 = array();
+    private $W3 = array();
 
     /**
      * Network constructor.
-     * @param array $b [[]]
-     * @param array $W [[]]
+     * @param array $b
+     * @param array $W1
+     * @param array $W2
+     * @param array $W3
      */
-    public function __construct(array $b, array $W){
+    public function __construct(array $b, array $W1, array $W2, array $W3){
         $this->b = $b;
-        $this->W = $W;
+        $this->W1 = $W1;
+        $this->W2 = $W2;
+        $this->W3 = $W3;
     }
 
     /**
@@ -19,25 +25,25 @@ class Network{
      */
     public function forward(array $x){
         $matrixX = new Matrix($x);
-        $matrixW1 = new Matrix($this->W[0]);
+        $matrixW1 = new Matrix($this->W1);
 
-      /*  var_dump($matrixX);
-        var_dump($matrixW1);*/
-
+        // matrixW1: ここの配列がおかしいのか
         $a = MatrixUtil::productMatrix($matrixX, $matrixW1, $this->b[0]);
+
         $z[0] = MatrixUtil::sigmoidArray($a[0]);
-        var_dump($z);
 
         $matrixX2 = new Matrix($z);
-        $matrixW2 = new Matrix($this->W[1]);
+        $matrixW2 = new Matrix($this->W2);
         $a2 = MatrixUtil::productMatrix($matrixX2, $matrixW2, $this->b[1]);
-        var_dump($a2);
+
         $z1[0] = MatrixUtil::sigmoidArray($a2[0]);
-        var_dump($z1);
 
         $matrixX3 = new Matrix($z1);
-        $matrixW3 = new Matrix($this->W[2]);
+        $matrixW3 = new Matrix($this->W3);
         $a3 = MatrixUtil::productMatrix($matrixX3, $matrixW3, $this->b[2]);
-        var_dump($a3);
+
+        echo Util::getArrayKeyMaxValue($a3[0])."\n";
+
+        //ソフトマックス関数
     }
 }

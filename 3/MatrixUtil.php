@@ -1,5 +1,7 @@
 <?php
 
+
+
 class MatrixUtil{
 
     /**
@@ -17,13 +19,19 @@ class MatrixUtil{
             $columnNumber = $matrix2->getColumnSize();//列の数
             for($j = 0; $j < $columnNumber; $j++){
                 $columnArray = $matrix2->getColumnArray($j);
-                $value = Self::productArray($rowArray, $columnArray);
+                $value = Self::productArray($rowArray, $columnArray);//★ここでエラー
                 $value += $b[$j];
                 array_push($rowResultArray, $value);
             }
             array_push($resultArray, $rowResultArray);
         }
         return $resultArray;
+    }
+
+
+    public static function test(){
+        $mat = new Matrix([1,2,3,4]);
+        var_dump($mat->getRowArray(0));
     }
 
     /**

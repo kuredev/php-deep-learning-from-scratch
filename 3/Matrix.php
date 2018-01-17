@@ -19,7 +19,7 @@ class Matrix{
 
     /**
      * @param int $n 0
-     * @return array [1,3]
+     * @return array [1,3] コンストラクタの例の場合
      */
     public function getColumnArray(int $n){
         $result = array();
@@ -31,7 +31,7 @@ class Matrix{
 
     /**
      * @param int $n
-     * @return mixed
+     * @return array [1,2] コンストラクタの例の場合
      */
     public function getRowArray(int $n){
         return $this->lineArray[$n];
